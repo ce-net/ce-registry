@@ -1,0 +1,31 @@
+[package]
+name = "ce-registry"
+version = "0.1.0"
+edition = "2024"
+description = "CE scaling primitive 01 — service registry, version-aware binding/resolver, and the health/readiness contract. A coord-plane SDK over ce-rs (DHT + atlas) and ce-coord (the multi-writer health CRDT). No node changes."
+license = "MIT"
+repository = "https://github.com/ce-net/ce-registry"
+keywords = ["ce", "service-discovery", "registry", "health", "dependencies"]
+categories = ["network-programming"]
+
+[lib]
+name = "ce_registry"
+path = "src/lib.rs"
+
+[dependencies]
+# The keystone shared types: Ctx envelope + Status + Partial<T>. No ce deps of its own.
+ce-scale-types = { path = "../ce-scale-types" }
+# The SDK to the local node: DHT discovery (advertise_service/find_service), atlas, and the
+# locate.rs ranking the registry reuses wholesale.
+ce-rs = { path = "../ce-rs", features = ["locate"] }
+# The multi-writer Merged CRDT engine the health book is built on, plus Coord.
+ce-coord = { path = "../ce-coord" }
+
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time", "sync"] }
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+tracing = "0.1"
+
+[dev-dependencies]
+proptest = "1"
+ce-coord = { path = "../ce-coord" }
