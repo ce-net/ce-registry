@@ -14,12 +14,12 @@ path = "src/lib.rs"
 
 [dependencies]
 # The keystone shared types: Ctx envelope + Status + Partial<T>. No ce deps of its own.
-ce-scale-types = { path = "../ce-scale-types" }
+ce-scale-types = { git = "https://github.com/ce-net/ce-scale-types" }
 # The SDK to the local node: DHT discovery (advertise_service/find_service), atlas, and the
 # locate.rs ranking the registry reuses wholesale.
-ce-rs = { path = "../ce-rs", features = ["locate"] }
+ce-rs = { git = "https://github.com/ce-net/ce-rs", features = ["locate"] }
 # The multi-writer Merged CRDT engine the health book is built on, plus Coord.
-ce-coord = { path = "../ce-coord" }
+ce-coord = { git = "https://github.com/ce-net/ce-coord" }
 
 tokio = { version = "1", features = ["macros", "rt-multi-thread", "time", "sync"] }
 anyhow = "1"
@@ -28,4 +28,4 @@ tracing = "0.1"
 
 [dev-dependencies]
 proptest = "1"
-ce-coord = { path = "../ce-coord" }
+ce-coord = { git = "https://github.com/ce-net/ce-coord" }
