@@ -1,7 +1,8 @@
 //! # ce-registry — CE scaling primitive 01: service registry, binding & health
 //!
-//! The "dependencies" mechanism of the CE scaling layer (`PLAN/scale/01-service-registry-binding.md`,
-//! conforming to `PLAN/scale/00-architecture.md`). It answers the three questions plain DHT
+//! The "dependencies" mechanism of the CE scaling layer: a service registry plus dependency
+//! binding over a shared HealthBook — SemVer constraints and health-aware resolve, coord-plane
+//! only. It answers the three questions plain DHT
 //! `find_service` cannot:
 //!
 //! 1. **Is an instance healthy and ready right now?** — a per-instance [`Health`] contract carried

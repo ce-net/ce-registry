@@ -2,8 +2,9 @@
 
 The **"dependencies" mechanism** of the CE scaling layer: discover a *healthy, versioned* service
 instance, declare and resolve app dependencies, and carry the per-instance health/readiness
-contract. It implements `PLAN/scale/01-service-registry-binding.md` and conforms to the shared
-contract `PLAN/scale/00-architecture.md`.
+contract. The contract in one line: a service registry plus dependency binding over a shared
+HealthBook — SemVer version constraints and health-aware resolve, as a coord-plane library with
+no new node RPCs.
 
 It builds on:
 
